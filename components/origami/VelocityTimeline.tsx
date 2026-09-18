@@ -332,7 +332,7 @@ export const VelocityTimeline: React.FC = () => {
                 </div>
                 <div>
                   <span className="font-mono text-[10px] tracking-widest text-brand-vermillion uppercase font-bold block">
-                    STAGE {activeStage + 1} // {currentMilestone.stageName.toUpperCase()}
+                    STAGE {activeStage + 1} · {currentMilestone.stageName.toUpperCase()}
                   </span>
                   <span className="font-mono text-xs text-ink-muted">
                     Certified 8i Origami Commitment
