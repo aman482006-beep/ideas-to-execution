@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   8i VENTURES COLOR SYSTEM
+   ------------------------------------------------------------
+   Tokens store "R G B" channel triplets so Tailwind's
+   <alpha-value> can compose opacity modifiers
+   (bg-brand-vermillion/15, text-ink-muted/70, ...).
+
+   Design logic:
+   - One warm paper ground, one forest brand ink.
+   - Brand ramp: forest (#143224) -> jade (#1d4a38) -> brand ink
+     (#12291d, CTA hover terminus). No second brand hue.
+   - Vermillion (#cf4322) is the needle: destinations, signals,
+     the alive dot. Never large surfaces, never body text.
+   - Hairlines are premixed ink-over-paper tints (solid), so
+     borders stay identical on paper and on white cards.
+   - The dark stage (Origami velocity, constellation, footer) is
+     the same forest, lit: one night ground family + one
+     luminous botanical green reserved for dark surfaces only.
+   - Cobalt blue (#1d4ed8) is RETIRED — it fought the vermillion
+     and read as default Tailwind, not as 8i.
+   ============================================================ */
+
+:root {
+  /* Paper grounds (warm, never pure gray) */
+  --bg: 251 249 245;            /* #fbf9f5 page paper */
+  --surface: 255 255 255;       /* card white */
+  --surface-card: 244 240 230;  /* parchment card */
+  --surface-muted: 233 227 213; /* pressed parchment */
+
+  /* Ink */
+  --text: 19 20 22;             /* #131416 primary ink */
+  --muted: 100 98 93;           /* #64625d secondary — 5.6:1 on paper */
+  --faint: 152 149 140;         /* #98958c tertiary */
+
+  /* Brand ramp */
+  --accent-primary: 20 50 36;   /* #143224 forest — primary brand ink */
+  --accent-jade: 29 74 56;      /* #1d4a38 supporting cool accent */
+  --brand-ink: 18 41 29;        /* #12291d deepest forest — hover terminus */
+  --accent-warm: 207 67 34;     /* #cf4322 vermillion needle */
+
+  /* Hairlines (solid premixes of ink over paper) */
+  --line: 226 224 220;          /* #e2e0dc standard hairline */
+  --border: 234 232 229;        /* #eae8e5 subtle hairline */
+
+  /* Night stage — the forest, lit */
+  --night: 8 20 16;             /* #081410 deepest ground */
+  --night-panel: 14 31 22;      /* #0e1f16 panel */
+  --night-raise: 22 48 31;      /* #16301f raised chip */
+  --night-line: 31 61 43;       /* #1f3d2b hairline on dark */
+  --night-line-strong: 47 85 64;/* #2f5540 emphasized hairline */
+  --night-mist: 159 196 176;    /* #9fc4b0 secondary text on dark */
+  --accent-luminous: 52 211 153;      /* #34d399 luminous green — dark surfaces only */
+  --accent-luminous-soft: 143 240 198;/* #8ff0c6 highlight terminus */
+
+  --shadow-subtle: 0 4px 20px -2px rgba(19, 20, 22, 0.05);
+  --shadow-editorial: 0 20px 40px -15px rgba(19, 20, 22, 0.08);
+}
+
+@layer base {
+  * {
+    border-color: rgb(var(--line));
+    box-sizing: border-box;
+  }
+
+  html {
+    background-color: rgb(var(--bg));
+    color: rgb(var(--text));
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: rgb(var(--bg));
+    color: rgb(var(--text));
+    font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  ::selection {
+    background-color: rgb(var(--accent-primary));
+    color: rgb(var(--bg));
+  }
+
+  /* Accessibility focus visible indicator */
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent-primary));
+    outline-offset: 3px;
+  }
+
+  /* Respect prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Subtle paper texture overlay */
+.paper-grain {
+  background-image: radial-gradient(rgba(19, 20, 22, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Editorial line drawings */
+.editorial-line {
+  position: relative;
+}
+
+.editorial-line::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: rgb(var(--line));
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--bg));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--text) / 0.18);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--text) / 0.35);
+}
