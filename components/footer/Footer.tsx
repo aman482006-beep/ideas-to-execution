@@ -99,6 +99,12 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link href="/founders-day" className="text-white/70 hover:text-white transition-colors flex items-center gap-1.5">
+                  <span>Founders&apos; Day (28 Nov)</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-green" />
+                </Link>
+              </li>
+              <li>
                 <Link href="/contact" className="text-white/70 hover:text-white transition-colors">
                   Contact Us
                 </Link>
