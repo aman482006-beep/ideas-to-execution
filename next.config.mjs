@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
+const isGithubActions = process.env.GITHUB_ACTIONS === 'true';
+const basePath = process.env.BASE_PATH || (isGithubActions ? '/ideas-to-execution' : '');
+
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
-  basePath: '/ideas-to-execution',
+  basePath,
   trailingSlash: true,
   images: {
     unoptimized: true,
