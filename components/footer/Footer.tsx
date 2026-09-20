@@ -75,6 +75,14 @@ export const Footer: React.FC = () => {
                   Team
                 </Link>
               </li>
+              <li>
+                <Link href="/leave" className="text-white/70 hover:text-white transition-colors flex items-center gap-1.5">
+                  <span>Leave Hub</span>
+                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded-full bg-white/10 text-white/70">
+                    Internal
+                  </span>
+                </Link>
+              </li>
             </ul>
           </div>
 

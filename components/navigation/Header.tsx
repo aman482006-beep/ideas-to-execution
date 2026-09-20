@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { label: 'News', href: '/news' },
   { label: 'Team', href: '/team' },
   { label: 'Origami', href: '/origami', highlight: true },
+  { label: 'Leave Hub', href: '/leave' },
   { label: 'Contact Us', href: '/contact' },
 ];
 
